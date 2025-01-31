@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
+    <title>Quiz App - Player Selection</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>Upload Quiz CSV File</h1>
-        <input type="file" id="fileInput" accept=".csv">
-        
-        <div id="quiz-container" class="hidden">
-            <h2 id="question"></h2>
-            <div id="options"></div>
-            <p id="timer"></p>
-        </div>
+        <h1>Select Number of Players</h1>
+        <button onclick="selectPlayers(1)">Single Player Mode</button>
+        <button onclick="selectPlayers(2)">Multi Players Mode</button>
     </div>
-    
-    <script src="script.js"></script>
+
+    <script>
+        function selectPlayers(players) {
+            localStorage.setItem("totalPlayers", players); // Store player choice
+            window.location.href = "quiz.html"; // Move to next page
+        }
+    </script>
 </body>
 </html>
+
+
