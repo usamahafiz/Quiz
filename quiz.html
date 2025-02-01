@@ -11,15 +11,39 @@
     <div class="container">
         <h1>Upload Quiz CSV File</h1>
         <input type="file" id="fileInput" accept=".csv">
+        
+        <div id="playerCount">
         <label>Enter number of MCQs:</label>
         <input type="number" id="mcqCount" min="5" max="30" value="12">
+    </div>
+
+        <div id="playerInputs">
+            <label>Player 1 Name:</label>
+            <input type="text" id="player1Name" placeholder="Enter Player 1 Name">
+
+            <div id="player2Div" style="display: none;">
+                <label>Player 2 Name:</label>
+                <input type="text" id="player2Name" placeholder="Enter Player 2 Name">
+            </div>
+        </div>
+
         <button onclick="uploadFile()">Start Quiz</button>
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const totalPlayers = localStorage.getItem("totalPlayers") || "1";
+            if (totalPlayers === "2") {
+                document.getElementById("player2Div").style.display = "block";
+            }
+        });
+
         function uploadFile() {
             const file = document.getElementById("fileInput").files[0];
             const mcqCount = document.getElementById("mcqCount").value;
+            const player1Name = document.getElementById("player1Name").value.trim();
+            const player2Name = document.getElementById("player2Name").value.trim();
+            const totalPlayers = localStorage.getItem("totalPlayers");
 
             if (!file) {
                 alert("Please upload a CSV file.");
@@ -31,11 +55,23 @@
                 return;
             }
 
-            localStorage.setItem("mcqCount", mcqCount); // Store MCQ count
+            if (player1Name === "") {
+                alert("Please enter Player 1's name.");
+                return;
+            }
+
+            if (totalPlayers === "2" && player2Name === "") {
+                alert("Please enter Player 2's name.");
+                return;
+            }
+
+            localStorage.setItem("mcqCount", mcqCount);
+            localStorage.setItem("player1Name", player1Name);
+            localStorage.setItem("player2Name", totalPlayers === "2" ? player2Name : "");
 
             const reader = new FileReader();
             reader.onload = function (e) {
-                localStorage.setItem("quizData", e.target.result); // Store CSV content
+                localStorage.setItem("quizData", e.target.result);
                 window.location.href = "play.html"; // Move to quiz page
             };
             reader.readAsText(file);
@@ -43,3 +79,11 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
