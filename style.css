@@ -1,126 +1,263 @@
-/* General Styles */
+/* General Styling */
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
   background-color: #f4f4f4;
-  padding: 20px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column; /* Adjusts to a column layout */
 }
 
-/* Hide elements initially */
-.hidden {
-  display: none;
-}
-
-/* Main Container */
+/* Container */
 .container {
-  max-width: 600px;
-  margin: auto;
   background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  animation: fadeIn 0.5s ease-in-out;
+  box-sizing: border-box; /* Ensures padding is included in width calculation */
 }
 
-/* Buttons */
+/* Headings */
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* File Input */
+input[type="file"] {
+  border: none;
+  background-color: #f9f9f9;
+}
+
+/* Button */
 button {
-  display: block;
   width: 100%;
   padding: 12px;
-  margin: 10px 0;
-  border: none;
-  background: #007bff;
+  background-color: #007BFF;
   color: white;
-  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s;
+  transition: 0.3s;
+  margin-top: 15px;
 }
 
 button:hover {
-  background: #0056b3;
+  background-color: #0056b3;
 }
 
-/* Player Selection Buttons */
-#player-selection button {
-  width: 45%;
-  display: inline-block;
+#playerCount{
+  margin-top: 20px;
+  padding-right: 10px;
+}
+/* Player Input Section */
+#playerInputs {
+  margin-top: 20px;
+  padding-right: 10px;
 }
 
-/* Input File & Number */
-input[type="file"], input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+#player2Div {
+  display: none;
 }
 
-/* Quiz Box */
-#quiz-container {
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  /* Stack form inputs vertically for small screens */
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  input, select {
+    font-size: 14px;
+  }
+
+  /* Player Name Inputs */
+  #playerInputs {
+    margin-top: 20px;
+  }
+
+  #player2Div {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust the layout for extra small screens */
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  input, select {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Result Page Styling */
+.result-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
   margin-top: 20px;
 }
 
-/* Timer */
-#timer {
-  font-size: 18px;
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-/* Question */
-#question {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Options */
-#options button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  background: white;
-  color: black;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s, color 0.3s;
-}
-
-#options button:hover {
-  background: #007bff;
-  color: white;
-}
-
-/* Correct & Wrong Answers Highlight */
-.correct {
-  background-color: green !important;
-  color: white !important;
-}
-
-.wrong {
-  background-color: red !important;
-  color: white !important;
-}
-
-/* Result Page */
 h2 {
-  margin-top: 20px;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-p {
+.result-card {
+  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   font-size: 18px;
-  font-weight: bold;
 }
 
+.result-card.red {
+  background: linear-gradient(135deg, #FF5252, #D32F2F);
+}
 
+.result-card span {
+  font-weight: bold;
+  font-size: 20px;
+}
 
+/* Restart Button */
+.restart-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #FF9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
+.restart-btn:hover {
+  background-color: #F57C00;
+}
 
+/* Responsive Design for Result Page */
+@media (max-width: 768px) {
+  .result-container {
+    padding: 20px;
+    width: 80%;
+  }
 
+  h2 {
+    font-size: 24px;
+  }
+
+  .result-card {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .restart-btn {
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-container {
+    padding: 15px;
+    width: 95%;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .result-card {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .restart-btn {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Ensures container is responsive and adjusts for all screen sizes */
+.container {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  box-sizing: border-box; /* Ensures padding is included in width calculation */
+}
+
+/* Adjust button size for smaller screens */
+button {
+  padding: 12px;
+  font-size: 16px;
+}
 
 
 
