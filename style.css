@@ -1,7 +1,7 @@
 /* General Styling */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #302f2f;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -10,11 +10,19 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column; /* Adjusts to a column layout */
+  background: #000000;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #434343, #2c2a2a);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #434343, #252323); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 /* Container */
 .container {
   background: white;
+  background: url("assets/v1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
@@ -27,7 +35,7 @@ body {
 /* Headings */
 h1 {
   font-size: 24px;
-  color: #333;
+  color: #fff;
   margin-bottom: 20px;
 }
 
@@ -52,8 +60,8 @@ input[type="file"] {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #007BFF;
-  color: white;
+  background-color: #fff;
+  color: black;
   border: none;
   border-radius: 8px;
   font-size: 18px;
@@ -63,7 +71,8 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #191919;
+  color: white;
 }
 
 #playerCount{
@@ -78,6 +87,12 @@ button:hover {
 
 #player2Div {
   display: none;
+}
+#player-name{
+  color: #fff;
+}
+#question{
+  color: #fff;
 }
 
 /* Fade In Animation */
@@ -150,6 +165,7 @@ button:hover {
 /* Result Page Styling */
 .result-container {
   background: #fff;
+  background-image: url("assets/v3.jpg");
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
@@ -162,12 +178,12 @@ button:hover {
 
 h2 {
   font-size: 28px;
-  color: #333;
+  color: #fff;
   margin-bottom: 20px;
 }
 
 .result-card {
-  background: linear-gradient(135deg, #4CAF50, #2E7D32);
+  background: linear-gradient(135deg, #3c6740, #85c589);
   color: white;
   padding: 15px;
   border-radius: 10px;
@@ -258,7 +274,6 @@ button {
   padding: 12px;
   font-size: 16px;
 }
-
 
 
 
